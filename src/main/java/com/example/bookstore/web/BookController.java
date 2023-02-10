@@ -11,6 +11,6 @@ public class BookController {
 	public String getBooks(Model model) {
 		String welcomeMsg = "Hello reading enthusiast!";
 		model.addAttribute("welcomeMsg", welcomeMsg);
-		return "index"; // index.html 
+		return "index"; // index.html
 	}
 }
