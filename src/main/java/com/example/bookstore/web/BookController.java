@@ -16,7 +16,7 @@ public class BookController {
 	@Autowired
 	BookRepository bookRepository;
 
-	// Main page controller
+	// Main page
 	@GetMapping("/index")
 	public String homePage(Model model) {
 		String welcomeMsg = "Hello reading enthusiast!";
@@ -24,30 +24,39 @@ public class BookController {
 		return "index"; // index.html
 	}
 
-	// Getting all books from database controller
+	// Getting all books from database
 	@GetMapping("/booklist")
 	public String getBooks(Model model) {
 		model.addAttribute("books", bookRepository.findAll());
 		return "booklist"; // booklist.html
 	}
 
-	// Add book form controller
+	// Add book form
 	@GetMapping("/add")
 	public String addBook(Model model) {
 		model.addAttribute("book", new Book());
 		return "addbook"; // addbook.html
 	}
 	
+	// Save book
 	@PostMapping("/save")
 	public String saveBook(Book book) {
 		bookRepository.save(book);
-		return "redirect:/booklist";
+		return "redirect:/booklist"; // booklist.html
 	}
 	
+	// Delete book
 	@GetMapping("/delete/{id}")
 	public String deleteBook(@PathVariable("id")Long bookId, Model model) {
 		bookRepository.deleteById(bookId);
-		return "redirect:../booklist";
+		return "redirect:../booklist"; // booklist.html
+	}
+	
+	// Edit book
+	@GetMapping("/edit/{id}")
+	public String showModBook(@PathVariable("id") Long bookId, Model model) {
+		model.addAttribute("book", bookRepository.findById(bookId));
+		return "editbook"; // editbook.html
 	}
 }
 

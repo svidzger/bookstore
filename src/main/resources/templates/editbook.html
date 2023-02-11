@@ -6,9 +6,10 @@
     <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
   </head>
   <body>
-    <h1>Add book</h1>
+    <h1>Edit book</h1>
     <div>
       <form th:object="${book}" th:action="@{/save}" action="#" method="post">
+		<input type="hidden" th:field="*{id}" class="form-control" />
         <label for="author">Author</label>
         <input type="text" id="author" th:field="*{author}"/><br>
         <label for="title">Title</label>
