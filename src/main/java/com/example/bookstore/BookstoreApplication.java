@@ -9,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.example.bookstore.domain.Book;
 import com.example.bookstore.domain.BookRepository;
+import com.example.bookstore.domain.Category;
+import com.example.bookstore.domain.CategoryRepository;
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -22,21 +24,39 @@ public class BookstoreApplication {
 
 	// Testing data always created when app starts
 	@Bean
-	public CommandLineRunner demo(BookRepository repository) {
+	public CommandLineRunner demo(BookRepository brepository, CategoryRepository crepository) {
 		return (args) -> {
-			log.info("added 3 books");
+
+			// Testing data for Book entity
 			Book b1 = new Book("Spare", "Prince Harry", "9780593593806", 2023, 28.50);
 			Book b2 = new Book("Atomic Habits", "James Clear", "9780735211292", 2018, 20.60);
 			Book b3 = new Book("Cosmos", "Carl Sagan", "9780593593806", 1983, 12.90);
+			log.info("added 3 books");
 
-			repository.save(b1);
-			repository.save(b2);
-			repository.save(b3);
+			brepository.save(b1);
+			brepository.save(b2);
+			brepository.save(b3);
 
 			log.info("fetch all books");
-			for (Book book : repository.findAll()) {
+			for (Book book : brepository.findAll()) {
 				log.info(book.toString());
 			}
+
+			// Testing data for Category entity
+			Category c1 = new Category("Biography");
+			Category c2 = new Category("Horror");
+			Category c3 = new Category("Adventure");
+			log.info("added 3 categories");
+
+			crepository.save(c1);
+			crepository.save(c2);
+			crepository.save(c3);
+
+			log.info("fetch all categories");
+			for (Category category : crepository.findAll()) {
+				log.info(category.toString());
+			}
+
 		};
 	}
 }
