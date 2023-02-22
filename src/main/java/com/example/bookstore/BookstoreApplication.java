@@ -26,11 +26,26 @@ public class BookstoreApplication {
 	@Bean
 	public CommandLineRunner demo(BookRepository brepository, CategoryRepository crepository) {
 		return (args) -> {
+			
+			// Testing data for Category entity
+			Category c1 = new Category("Biography");
+			Category c2 = new Category("Horror");
+			Category c3 = new Category("Science");
+			log.info("added 3 categories");
+
+			crepository.save(c1);
+			crepository.save(c2);
+			crepository.save(c3);
+
+			log.info("fetch all categories");
+			for (Category category : crepository.findAll()) {
+				log.info(category.toString());
+			}
 
 			// Testing data for Book entity
-			Book b1 = new Book("Spare", "Prince Harry", "9780593593806", 2023, 28.50);
-			Book b2 = new Book("Atomic Habits", "James Clear", "9780735211292", 2018, 20.60);
-			Book b3 = new Book("Cosmos", "Carl Sagan", "9780593593806", 1983, 12.90);
+			Book b1 = new Book("Spare", "Prince Harry", "9780593593806", 2023, 28.59, c1);
+			Book b2 = new Book("The Shining", "Stephen King", "9780450040184", 1980, 15.99, c2);
+			Book b3 = new Book("Cosmos", "Carl Sagan", "9780593593806", 1983, 12.99, c3);
 			log.info("added 3 books");
 
 			brepository.save(b1);
@@ -42,20 +57,7 @@ public class BookstoreApplication {
 				log.info(book.toString());
 			}
 
-			// Testing data for Category entity
-			Category c1 = new Category("Biography");
-			Category c2 = new Category("Horror");
-			Category c3 = new Category("Adventure");
-			log.info("added 3 categories");
 
-			crepository.save(c1);
-			crepository.save(c2);
-			crepository.save(c3);
-
-			log.info("fetch all categories");
-			for (Category category : crepository.findAll()) {
-				log.info(category.toString());
-			}
 
 		};
 	}

@@ -10,8 +10,8 @@
 	<div class="container text-center">
 		<h1>Category list</h1>
 		<table class="table table-bordered table-hover">
-			<tr>
-				<th>Category name</th>
+			<tr class="table-secondary">
+				<th>Category</th>
 			</tr>
 			<tr th:each=" category : ${categories}">
 				<td th:text="${category.name}"></td>

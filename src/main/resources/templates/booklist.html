@@ -10,12 +10,13 @@
 	<div class="container text-center">
 		<h1>All books we have!</h1>
 		<table class="table table-bordered table-hover">
-			<tr>
+			<tr class="table-secondary">
 				<th>Author</th>
 				<th>Title</th>
 				<th>Year</th>
 				<th>Price</th>
 				<th>ISBN</th>
+				<th>Category</th>
 			</tr>
 			<tr th:each=" book : ${books}">
 				<td th:text="${book.author}"></td>
@@ -23,6 +24,7 @@
 				<td th:text="${book.year}"></td>
 				<td th:text="${book.price}"></td>
 				<td th:text="${book.isbn}"></td>
+				<td th:text="${book.category.name}"></td>
 				<td><a th:href="@{/delete/{id}(id=${book.id})}"
 					class="btn btn-danger">Delete</a></td>
 				<td><a th:href="@{/edit/{id}(id=${book.id})}"
