@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Book store</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+	<div class="container text-center">
+		<h1>Category list</h1>
+		<table class="table table-bordered table-hover">
+			<tr>
+				<th>Category name</th>
+			</tr>
+			<tr th:each=" category : ${categories}">
+				<td th:text="${category.name}"></td>
+			</tr>
+		</table>
+		<a href="/addcategory" class="btn btn-success">Add Category</a> <a
+			href="/index" class="btn btn-outline-secondary">Back</a>
+	</div>
+
+</body>
+</html>

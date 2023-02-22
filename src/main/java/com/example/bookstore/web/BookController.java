@@ -19,7 +19,7 @@ public class BookController {
 	// Main page
 	@GetMapping("/index")
 	public String homePage(Model model) {
-		String welcomeMsg = "Hello reading enthusiast!";
+		String welcomeMsg = "Welcome to the book store!";
 		model.addAttribute("welcomeMsg", welcomeMsg);
 		return "index"; // index.html
 	}
@@ -31,15 +31,15 @@ public class BookController {
 		return "booklist"; // booklist.html
 	}
 
-	// Add book form
-	@GetMapping("/add")
+	// Add new book form
+	@GetMapping("/addbook")
 	public String addBook(Model model) {
 		model.addAttribute("book", new Book());
 		return "addbook"; // addbook.html
 	}
 	
 	// Save book
-	@PostMapping("/save")
+	@PostMapping("/savebook")
 	public String saveBook(Book book) {
 		bookRepository.save(book);
 		return "redirect:/booklist"; // booklist.html
