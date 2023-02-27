@@ -21,8 +21,13 @@
 						th:field="*{year}" /><br> <label for="price">Price</label> <input
 						class="form-control" type="text" id="price" th:field="*{price}" /><br>
 					<label for="isbn">ISBN</label> <input class="form-control"
-						type="text" id="isbn" th:field="*{isbn}" /><br> <input
-						class="btn btn-primary" type="submit" value="Save" /> <a
+						type="text" id="isbn" th:field="*{isbn}" /><br> <label
+						for="categorylist">Category</label><br> <select id="categorylist"
+						th:field="*{category}" class="form-controll">
+						<option th:each="category: ${categories}"
+							th:value="${category.id}" th:text="${category.name}"></option>
+					</select><br>
+					<br> <input class="btn btn-primary" type="submit" value="Save" /> <a
 						href="/booklist" class="btn btn-outline-secondary">Back</a>
 				</div>
 			</form>

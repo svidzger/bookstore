@@ -9,12 +9,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.example.bookstore.domain.Book;
 import com.example.bookstore.domain.BookRepository;
+import com.example.bookstore.domain.CategoryRepository;
 
 @Controller
 public class BookController {
 
 	@Autowired
 	BookRepository bookRepository;
+	@Autowired
+	CategoryRepository categoryRepository;
 
 	// Main page
 	@GetMapping("/index")
@@ -35,29 +38,29 @@ public class BookController {
 	@GetMapping("/addbook")
 	public String addBook(Model model) {
 		model.addAttribute("book", new Book());
+		model.addAttribute("categories", categoryRepository.findAll());
 		return "addbook"; // addbook.html
 	}
-	
+
 	// Save book
 	@PostMapping("/savebook")
 	public String saveBook(Book book) {
 		bookRepository.save(book);
 		return "redirect:/booklist"; // booklist.html
 	}
-	
+
 	// Delete book
 	@GetMapping("/delete/{id}")
-	public String deleteBook(@PathVariable("id")Long bookId, Model model) {
+	public String deleteBook(@PathVariable("id") Long bookId, Model model) {
 		bookRepository.deleteById(bookId);
 		return "redirect:../booklist"; // booklist.html
 	}
-	
+
 	// Edit book
 	@GetMapping("/edit/{id}")
 	public String showModBook(@PathVariable("id") Long bookId, Model model) {
 		model.addAttribute("book", bookRepository.findById(bookId));
+		model.addAttribute("categories", categoryRepository.findAll());
 		return "editbook"; // editbook.html
 	}
 }
-
-
