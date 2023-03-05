@@ -1,16 +1,20 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>Book store</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"
-	th:href="@{/css/bootstrap.min.css}" />
-</head>
-<body>
-	<div class="container text-center">
-		<h1 th:text="${welcomeMsg}"></h1>
-		<a href="/booklist" class="btn btn-primary">Books</a> <a
-			href="/categorylist" class="btn btn-primary">Categories</a>
-	</div>
-</body>
+  <head>
+    <title>Book store</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="/css/bootstrap.min.css"
+      th:href="@{/css/bootstrap.min.css}"
+    />
+  </head>
+  <body>
+    <div class="container text-center">
+      <h1 th:text="${welcomeMsg}"></h1>
+      <a href="/booklist" class="btn btn-primary">Books</a>
+      <a href="/categorylist" class="btn btn-primary">Categories</a>
+    </div>
+  </body>
 </html>

@@ -26,7 +26,7 @@ public class BookstoreApplication {
 	@Bean
 	public CommandLineRunner demo(BookRepository brepository, CategoryRepository crepository) {
 		return (args) -> {
-			
+
 			// Testing data for Category entity
 			Category c1 = new Category("Biography");
 			Category c2 = new Category("Horror");
@@ -56,8 +56,6 @@ public class BookstoreApplication {
 			for (Book book : brepository.findAll()) {
 				log.info(book.toString());
 			}
-
-
 
 		};
 	}

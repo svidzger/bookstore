@@ -1,38 +1,80 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>Book store</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"
-	th:href="@{/css/bootstrap.min.css}" />
-</head>
-<body>
-	<div class="row">
-		<div class="mx-auto col-10 col-md-8 col-lg-6">
-			<h1>Edit book</h1>
-			<form th:object="${book}" th:action="@{/savebook}" action="#"
-				method="post">
-				<div class="form-group">
-					<input type="hidden" th:field="*{id}" class="form-control" /> <label
-						for="author">Author</label> <input class="form-control"
-						type="text" id="author" th:field="*{author}" /><br> <label
-						for="title">Title</label> <input class="form-control" type="text"
-						id="title" th:field="*{title}" /><br> <label for="year">Year</label>
-					<input class="form-control" type="text" id="year"
-						th:field="*{year}" /><br> <label for="price">Price</label> <input
-						class="form-control" type="text" id="price" th:field="*{price}" /><br>
-					<label for="isbn">ISBN</label> <input class="form-control"
-						type="text" id="isbn" th:field="*{isbn}" /><br>
-					<label for="categorylist">Category</label><br> <select
-						id="categorylist" th:field="*{category}" class="form-controll">
-						<option th:each="category: ${categories}"
-							th:value="${category.id}" th:text="${category.name}"></option>
-					</select><br>
-					<br> <input class="btn btn-primary" type="submit" value="Save" />
-					<a href="/booklist" class="btn btn-outline-secondary">Back</a>
-				</div>
-			</form>
-		</div>
-	</div>
-</body>
+  <head>
+    <title>Book store</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link
+      type="text/css"
+      rel="stylesheet"
+      href="/css/bootstrap.min.css"
+      th:href="@{/css/bootstrap.min.css}"
+    />
+  </head>
+  <body>
+    <div class="row">
+      <div class="mx-auto col-10 col-md-8 col-lg-6">
+        <h1>Edit book</h1>
+        <form
+          th:object="${book}"
+          th:action="@{/savebook}"
+          action="#"
+          method="post"
+        >
+          <div class="form-group">
+            <input type="hidden" th:field="*{id}" class="form-control" />
+            <label for="author">Author</label>
+            <input
+              class="form-control"
+              type="text"
+              id="author"
+              th:field="*{author}"
+            /><br />
+            <label for="title">Title</label>
+            <input
+              class="form-control"
+              type="text"
+              id="title"
+              th:field="*{title}"
+            /><br />
+            <label for="year">Year</label>
+            <input
+              class="form-control"
+              type="text"
+              id="year"
+              th:field="*{year}"
+            /><br />
+            <label for="price">Price</label>
+            <input
+              class="form-control"
+              type="text"
+              id="price"
+              th:field="*{price}"
+            /><br />
+            <label for="isbn">ISBN</label>
+            <input
+              class="form-control"
+              type="text"
+              id="isbn"
+              th:field="*{isbn}"
+            /><br />
+            <label for="categorylist">Category</label><br />
+            <select
+              id="categorylist"
+              th:field="*{category}"
+              class="form-controll"
+            >
+              <option
+                th:each="category: ${categories}"
+                th:value="${category.id}"
+                th:text="${category.name}"
+              ></option></select
+            ><br />
+            <br />
+            <input class="btn btn-primary" type="submit" value="Save" />
+            <a href="/booklist" class="btn btn-outline-secondary">Back</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>

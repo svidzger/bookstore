@@ -21,18 +21,18 @@ public class CategoryController {
 		model.addAttribute("categories", categoryRepository.findAll());
 		return "categorylist"; // categorylist.html
 	}
-	
+
 	// Add new category form
 	@GetMapping("/addcategory")
 	public String addCategory(Model model) {
 		model.addAttribute("category", new Category());
 		return "addcategory"; // addcategory.html
 	}
-	
+
 	@PostMapping("/savecategory")
 	public String saveCategory(Category category) {
 		categoryRepository.save(category);
-		return "redirect:/categorylist"; //categorylist.html
+		return "redirect:/categorylist"; // categorylist.html
 	}
-	
+
 }
