@@ -15,7 +15,7 @@ import jakarta.persistence.OneToMany;
 public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private int categoryId;
 	private String name;
 
 	@JsonIgnore
@@ -33,8 +33,8 @@ public class Category {
 	}
 
 	// Getters
-	public int getId() {
-		return id;
+	public int getCategoryId() {
+		return categoryId;
 	}
 
 	public String getName() {
@@ -46,8 +46,8 @@ public class Category {
 	}
 
 	// Setters
-	public void setId(int id) {
-		this.id = id;
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
 
 	public void setName(String name) {
@@ -60,7 +60,7 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Category [id=" + id + ", name=" + name + "]";
+		return "Category [categoryId=" + categoryId + ", name=" + name + "]";
 	}
 
 }
