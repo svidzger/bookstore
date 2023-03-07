@@ -44,6 +44,7 @@
           </li>
         </ul>
       </div>
+      <a class="navbar-brand"><span sec:authentication="name">Bob</span> </a>
       <form class="form-inline" th:action="@{/logout}" method="post">
         <button class="btn btn-outline-primary my-2 my-sm-0">Sign out</button>
       </form>
