@@ -12,7 +12,7 @@ import jakarta.persistence.ManyToOne;
 public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	private Long id;
 	private String title, author, isbn;
 	@Column(name = "publishing_year")
 	private int year;
@@ -38,7 +38,7 @@ public class Book {
 	}
 
 	// Getters
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -67,7 +67,7 @@ public class Book {
 	}
 
 	// Setters
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

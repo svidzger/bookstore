@@ -11,6 +11,9 @@ import com.example.bookstore.domain.Book;
 import com.example.bookstore.domain.BookRepository;
 import com.example.bookstore.domain.Category;
 import com.example.bookstore.domain.CategoryRepository;
+import com.example.bookstore.domain.User;
+import com.example.bookstore.domain.UserRepository;
+
 
 @SpringBootApplication
 public class BookstoreApplication {
@@ -24,9 +27,8 @@ public class BookstoreApplication {
 
 	// Testing data always created when app starts
 	@Bean
-	public CommandLineRunner demo(BookRepository brepository, CategoryRepository crepository) {
+	public CommandLineRunner demo(BookRepository brepository, CategoryRepository crepository, UserRepository urepository) {
 		return (args) -> {
-
 			// Testing data for Category entity
 			Category c1 = new Category("Biography");
 			Category c2 = new Category("Horror");
@@ -55,6 +57,18 @@ public class BookstoreApplication {
 			log.info("fetch all books");
 			for (Book book : brepository.findAll()) {
 				log.info(book.toString());
+			}
+
+			// Create test users
+			User user1 = new User("user", "$2a$10$9GVY78j6TXCbePZtjLPVQOopBLQw1z4Isr4RR01IDbnxDJWknZV4C","user@email.com", "USER");
+			User user2 = new User("admin", "$2a$10$zRHb1X18PiVGVne6ZKaD5Oqu3n7AWka43bMvYXAUom84jrayRE0dO","admin@email.com", "ADMIN");
+
+			urepository.save(user1);
+			urepository.save(user2);
+
+			log.info("test users added");
+			for (User user: urepository.findAll()) {
+				log.info(user.toString());
 			}
 
 		};

@@ -15,7 +15,7 @@ import jakarta.persistence.OneToMany;
 public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int categoryId;
+	private Long categoryId;
 	private String name;
 
 	@JsonIgnore
@@ -33,7 +33,7 @@ public class Category {
 	}
 
 	// Getters
-	public int getCategoryId() {
+	public Long getCategoryId() {
 		return categoryId;
 	}
 
@@ -46,7 +46,7 @@ public class Category {
 	}
 
 	// Setters
-	public void setCategoryId(int categoryId) {
+	public void setCategoryId(Long categoryId) {
 		this.categoryId = categoryId;
 	}
 
